@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version '2.7.1' rails '5.2.3' did not work - exchanged with > 6.0.2'
 
 * System dependencies
 
