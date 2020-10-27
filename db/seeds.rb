@@ -7,15 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-Faker::Config.locale = :fr
+require "activerecord-reset-pk-sequence"
 
-User.destroy_all
-City.destroy_all
-Gossip.destroy_all
-Tag.destroy_all
-PrivateMessage.destroy_all
-JoinTableTagGossip.destroy_all
-LierPrivateMessageUser.destroy_all
+User.delete_all
+User.reset_pk_sequence
+City.delete_all
+City.reset_pk_sequence
+Gossip.delete_all
+Gossip.reset_pk_sequence
+Tag.delete_all
+Tag.reset_pk_sequence
+PrivateMessage.delete_all
+PrivateMessage.reset_pk_sequence
+JoinTableTagGossip.delete_all
+JoinTableTagGossip.reset_pk_sequence
+LierPrivateMessageUser.delete_all
+LierPrivateMessageUser.reset_pk_sequence
 
 #Cities
 
@@ -34,7 +41,7 @@ adjectifs= %w[petit grand maigre gros chauve muscle intelligent parfait mediocre
   first_name = Faker::Name.first_name
   age = rand(18..90)
   city = City.all.sample
-   text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Name.title[:job].sample} à #{city.name} "
+  text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Job.title} à #{city.name} "
   User.create(first_name: first_name, last_name: Faker::Name.last_name ,description: text, email: Faker::Internet.email, age: age, city: city )
 
 end
