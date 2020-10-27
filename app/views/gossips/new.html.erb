@@ -1,0 +1,35 @@
+<h1> Raconte-nous un nouveau potin ! </h1>
+<p> on aime les details </p>
+
+<html>
+  <body>
+    <!-- ... -->
+
+    <%= form_tag gossips_path(action: 'create'), method: "post" do %>
+
+      <%= label_tag 'Titre' %>
+      <%= text_field_tag 'title', @gossip.title %>
+      <br /> <br />
+
+      <%= label_tag 'Contenu' %>
+      <%= text_area_tag 'content', @gossip.content %>
+      <br /> <br />
+
+      <%= submit_tag "Create Gossip" %>
+
+    <% end %>
+
+    <!-- ... -->
+
+    <% if @gossip.errors.any? %>
+    <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert">
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+  </body>
+</html>
