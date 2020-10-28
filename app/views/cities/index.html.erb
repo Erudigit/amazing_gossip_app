@@ -1,0 +1,17 @@
+<h1><%= @city.name %></h1> 
+
+<p> Les potins lies a la ville sont les suivants </p>] 
+
+<div class="card-columns">
+  <% @gossips.each do |gossip|%>
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> Title : <%= gossip.title %></h5> 
+        <p class="card-text"><small class="text-muted"> Author <%= gossip.user.first_name %></small></p>
+        <%= link_to "voir le gossip", gossip_path(gossip.id), class:"btn btn-primary" %>
+        <%= link_to "Editer le gossip", edit_gossip_path(gossip.id), class:"btn btn-default" %>
+        <a href="<%=  gossip_path(gossip.id) %>" class="btn btn-danger"  data-confirm="etes-vous surs ?" data-method="DELETE"> Supprimer </a>
+      </div>
+    </div>
+  <% end %>
+</div>

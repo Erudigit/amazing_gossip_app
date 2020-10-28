@@ -1,0 +1,15 @@
+<h1><%= @gossip.title %></h1> 
+
+<p> Cree par <%= @gossip.user.first_name %> <br>
+Venant de : <%= @gossip.user.city.name %>  </p>
+<p> <%= link_to "voir le user", users_path(@user) %><br></p>
+<p> <%= link_to "Pour les potins lies a sa ville, c'est par ici..." city_path(city_id), class: btn btn-primary %></p>
+<p> Voici le contenu : <%= @gossip.content %></p>
+<p> Cree le : <%=  @gossip.created_at %></p>
+
+
+<%= link_to "revenir en arriere", gossips_path, class:"btn btnb-primary" %>
+
+ 
+
+

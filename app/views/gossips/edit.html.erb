@@ -1,0 +1,35 @@
+<h1> Editer le gossip <%= @gossip.title %></h1> 
+
+<!-- ... -->
+
+<%= form_for @gossip do |f| %>
+  <div class="form-group">
+    <%= label_tag 'Title' %>
+    <%= f.text_field :title, class: 'form-control' %>
+    <br /> <br />
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'Contenu' %>
+    <%= f.text_area :content,  class: 'form-control' %>
+    <br /> <br />
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag "Edit Gossip", class:'btn btn-primary' %>
+    </div>
+<% end %>
+
+<!-- ... -->
+
+<% if @gossip.errors.any? %>
+<p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+<ul>
+  <% @gossip.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger" role="alert">
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+ 

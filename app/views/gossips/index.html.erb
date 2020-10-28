@@ -1,0 +1,21 @@
+<h1> Bienvenue sur The Gossip Project ! </h1> 
+
+<div class ="container" style="padding-top: 5rem;">
+
+<br>
+<%= button_to "Creer un potin", new_gossip_path, :method => "get", class:'btn btn-success' %>
+<br>
+
+<div class="card-columns">
+  <% @gossips.each do |gossip|%>
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> Title : <%= gossip.title %></h5> 
+        <p class="card-text"><small class="text-muted"> Author <%= gossip.user.first_name %></small></p>
+        <%= link_to "voir le gossip", gossip_path(gossip.id), class:"btn btn-primary" %>
+        <%= link_to "Editer le gossip", edit_gossip_path(gossip.id), class:"btn btn-default" %>
+        <a href="<%=  gossip_path(gossip.id) %>" class="btn btn-danger"  data-confirm="Etes-vous surs de vouloir supprimer le gossip ?" data-method="DELETE"> Supprimer </a>
+      </div>
+    </div>
+  <% end %>
+</div>

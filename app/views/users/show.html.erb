@@ -1,0 +1,12 @@
+<h1><%= @user.first_name %></h1> 
+
+<p> Les informations du user
+  <li> voici son email : <%= @user.email %> 
+  <li> son age : <%= @user.age %>
+  <li> sa description : <%= @user.description %>
+  <li> le nom de sa ville : <%= @user.city %>
+
+  <%= link_to "Pour les potins lies a sa ville, c'est par ici..." city_path(city_id), class: btn btn-primary %>
+  
+</p>
+
