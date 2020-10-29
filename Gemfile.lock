@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 9ea5a3d3d57f19cbf14024eca34a51e11f40c487
+  revision: 86d563d6468f7eec6e8cd62ec25654498921a2df
   branch: master
   specs:
     faker (2.14.0)
@@ -56,6 +56,8 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    bcrypt (3.1.16)
+    bcrypt (3.1.16-java)
     bindex (0.8.1)
     bootsnap (1.4.9)
       msgpack (~> 1.0)
@@ -230,6 +232,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-reset-pk-sequence
+  bcrypt
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)

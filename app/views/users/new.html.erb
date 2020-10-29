@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-body">
+  
+    <h1>Tu veux devenir une commère? </h1>
+    <p>Tous ce que tu nous confies, reste entre nous ;)</p>
+    </br>
+
+    <%= form_tag users_path(action: "create"), method: "post" do %>
+
+        <%= label_tag "prénom:" %> </br>
+        <%= text_field_tag "first_name", @first_name %>
+        <br /> <br />
+
+        <%= label_tag "nom:" %> </br>
+        <%= text_field_tag "last_name", @last_name %>
+        <br /> <br />
+
+        <%= label_tag "description:" %> </br>
+        <%= text_area_tag "description", @description %>
+        <br /> <br />
+
+        <%= label_tag "email:" %> </br>
+        <%= text_field_tag "email", @email %>
+        <br /> <br />
+
+        <%= label_tag "age:" %> </br>
+        <%= text_field_tag "age", @age.to_i %>
+        <br /> <br />
+
+        <%= label_tag "choisi un numéro de ville entre 1 et 10:" %> </br>
+        <%= text_field_tag "city_id", @city_id.to_i %>
+        <br /> <br />
+
+        <%= label_tag "mot de passe:" %> </br>
+        <%= text_field_tag "password", @password %>
+        <br /> <br />
+
+        <%= submit_tag "Créer ton profile" %>
+        
+    <% end %>
+
+        </br>
+
+        <% if @user.errors.any? %>
+            <p>Nous n'avons pas réussi à créer le profile pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <div class="alert alert-danger" role="alert">
+                <li><%= message %></li>
+                </div>
+        <% end %>
+            </ul>
+
+    <% end %>
+   
+  </div>
+</div>

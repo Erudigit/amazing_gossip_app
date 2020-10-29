@@ -35,66 +35,66 @@ end
 puts
 puts "Cities table"
 tp City.all
-#Users
-adjectifs= %w[petit grand maigre gros chauve muscle intelligent parfait mediocre insupportable eblouissant valeureux]
-10.times do 
-  first_name = Faker::Name.first_name
-  age = rand(18..90)
-  city = City.all.sample
-  text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Job.title} à #{city.name} "
-  User.create(first_name: first_name, last_name: Faker::Name.last_name ,description: text, email: Faker::Internet.email, age: age, city: city )
+# #Users
+# adjectifs= %w[petit grand maigre gros chauve muscle intelligent parfait mediocre insupportable eblouissant valeureux]
+# 10.times do 
+#   first_name = Faker::Name.first_name
+#   age = rand(18..90)
+#   city = City.all.sample
+#   text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Job.title} à #{city.name} "
+#   # User.create(first_name: first_name, last_name: Faker::Name.last_name ,description: text, email: Faker::Internet.email, age: age, city: city )
 
-end
-puts
-puts "Users table"
-tp User.all
+# end
+# puts
+# #puts "Users table"
+# #tp User.all
 
-#Gossips
-20.times do 
-  Gossip.create(title: Faker::Hipster.word, content: Faker::ChuckNorris.fact, user: User.all.sample )
+# #Gossips
+# 20.times do 
+#   Gossip.create(title: Faker::Hipster.word, content: Faker::ChuckNorris.fact, user: User.all.sample )
   
-end
-puts
-puts "Gossips table"
-tp Gossip.all
+# end
+# puts
+# puts "Gossips table"
+# tp Gossip.all
 
-#Tags 
-10.times do
-  Tag.create(title: Faker::Verb.base)
-end
-puts
-puts "Cities table"
-tp Tag.all
+# #Tags 
+# 10.times do
+#   Tag.create(title: Faker::Verb.base)
+# end
+# puts
+# puts "Cities table"
+# tp Tag.all
 
-Tag.all.each do |t|
-  JoinTableTagGossip.create(tag: t, gossip: Gossip.all.sample)
-end
+# Tag.all.each do |t|
+#   JoinTableTagGossip.create(tag: t, gossip: Gossip.all.sample)
+# end
 
-Gossip.all.each do |g|
-  JoinTableTagGossip.create(tag: Tag.all.sample, gossip: g)
-end
+# Gossip.all.each do |g|
+#   JoinTableTagGossip.create(tag: Tag.all.sample, gossip: g)
+# end
 
-puts
-puts "JoinTableTagGossip table"
-tp JoinTableTagGossip.all
+# puts
+# puts "JoinTableTagGossip table"
+# tp JoinTableTagGossip.all
 
-#Private messages
-10.times do
-  PrivateMessage.create(content:Faker::Lorem.sentence,sender: User.all.sample)
-end
-puts
-puts "Private messages table"
-tp PrivateMessage.all
+# #Private messages
+# 10.times do
+#   PrivateMessage.create(content:Faker::Lorem.sentence,sender: User.all.sample)
+# end
+# puts
+# puts "Private messages table"
+# tp PrivateMessage.all
 
-#Lier private_messages_users
-User.all.each do |u|
-  LierPrivateMessageUser.create(user: u, private_message: PrivateMessage.all.sample)
-end
+# #Lier private_messages_users
+# User.all.each do |u|
+#   LierPrivateMessageUser.create(user: u, private_message: PrivateMessage.all.sample)
+# end
 
-PrivateMessage.all.each do |pm|
-  LierPrivateMessageUser.create(user: User.all.sample, private_message: pm)
-end
+# PrivateMessage.all.each do |pm|
+#   LierPrivateMessageUser.create(user: User.all.sample, private_message: pm)
+# end
 
-puts
-puts "Lier private message et users table"
-tp LierPrivateMessageUser.all
+# puts
+# puts "Lier private message et users table"
+# tp LierPrivateMessageUser.all

@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+  
+    <h1>Connexion : </h1>
+    </br>
+
+    <%= form_tag sessions_path(action: "create"), method: "post" do %>
+
+        <%= label_tag "email:" %> </br>
+        <%= text_field_tag "email", @email %>
+        <br /> <br />
+
+        <%= label_tag "mot de passe:" %> </br>
+        <%= text_field_tag "password", @password %>
+        <br /> <br />
+
+        <%= submit_tag "Connexion" %>
+        
+    <% end %>
+
+        </br>
+   
+  </div>
+</div>

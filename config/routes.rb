@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :users
   resources :gossips
   resources :cities
+  resources :sessions, only:[:index, :new, :create, :destroy]
 
 end

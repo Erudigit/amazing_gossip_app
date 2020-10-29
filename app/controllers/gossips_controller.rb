@@ -1,3 +1,4 @@
+
 class GossipsController < ApplicationController 
  
   def index
@@ -5,8 +6,11 @@ class GossipsController < ApplicationController
   end
 
   
+
   def show
-    @gossip = Gossip.find(params[:id])
+    @gossip = params[:id]
+    @gossip_id = Gossip.find(params[:id])
+    @get_city_name = City.find(@gossip_id.user.city_id).name
   end
    
   def new
@@ -14,11 +18,12 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.create(post_params, user_id: 11)
+    @gossip = Gossip.create(post_params)
+    @gossip.user = User.find_by(id: session[:user_id])
     
     if @gossip.save
       puts "saved"
-      redirect_to home_path, :notice => 'Mefait accompli'
+      redirect_to gossips_path, :notice => 'Mefait accompli'
     else
       puts "hmmm...ca n'a pas fonctionne,essaie encore"
       puts @gossip.errors.messages
@@ -46,9 +51,15 @@ class GossipsController < ApplicationController
   private
 
   def post_params
-    params.require(:gossip).permit(:title, :content)
+    params.permit(:title, :content)
+  end
+      
+  def authenticate_user
+      unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+      end
   end
 
 
 end
- 

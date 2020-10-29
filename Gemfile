@@ -69,3 +69,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
  gem 'webpacker', '~> 3.5'
 
 gem 'activerecord-reset-pk-sequence'
+
+gem 'bcrypt'

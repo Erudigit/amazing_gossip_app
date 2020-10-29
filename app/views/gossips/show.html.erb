@@ -1,15 +1,38 @@
-<h1><%= @gossip.title %></h1> 
+<div class="card">
+    <div class="card-header">
+         Potin numéro <%= @gossip %>: 
+    </div>
 
-<p> Cree par <%= @gossip.user.first_name %> <br>
-Venant de : <%= @gossip.user.city.name %>  </p>
-<p> <%= link_to "voir le user", users_path(@user) %><br></p>
-<p> <%= link_to "Pour les potins lies a sa ville, c'est par ici..." city_path(city_id), class: btn btn-primary %></p>
-<p> Voici le contenu : <%= @gossip.content %></p>
-<p> Cree le : <%=  @gossip.created_at %></p>
+    <div class="card-body">
+        <h6 class="card-title"> <U>le titre du potin est:</U> <%=@gossip_id.title %> </h6>
+            <h7> l'auteur est: <%= link_to "#{@gossip_id.user.first_name}", user_path%></h7>
+            <p class="card-text"> et vient de : <%= link_to "#{@get_city_name}", city_path%></p>
+            <p> ce potin a été crée le: <%=@gossip_id.created_at %> </p> </br>
+            <p><U>Contenu du potin:</U> </p> </br>
+            <p> <%=@gossip_id.content %> </p> </br>
+            <%=link_to "Editer l'article", edit_gossip_path, class:"btn btn-success" %>
+            <a href="<%=  gossip_path(@gossip) %>" class="btn btn-danger"  data-confirm="Etes-vous sur ?" data-method="DELETE"> Supprimer </a>
+    </div>
+</div>    
+    </br>
+<div class="card">
+    <div class="card-header">
+    Commente tes potins favoris:
+    </div>
+    <div class="card-body">
+    <div class="form-group">
+        <%= form_tag gossip_path(@gossip) do %>
+            </br>
+            <label>Contenu:</label>
+            </br>
+            <%=text_area_tag :content%>
+        </div>
 
+        <div class="form-froup">
+            <button type="submit" class="btn btn-primary">Commenter</button>
+        </div>
 
-<%= link_to "revenir en arriere", gossips_path, class:"btn btnb-primary" %>
-
- 
-
-
+        <% end %>    
+        
+    </div>
+</div>
