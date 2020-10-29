@@ -1,6 +1,8 @@
 
 class GossipsController < ApplicationController 
- 
+  before_action :authenticate_user, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :good_user, only: [:edit, :update, :destroy]
+
   def index
     @gossips = Gossip.all 
   end
@@ -55,11 +57,19 @@ class GossipsController < ApplicationController
   end
       
   def authenticate_user
-      unless current_user
+      unless session[:user_id]
       flash[:danger] = "Please log in."
       redirect_to new_session_path
       end
   end
+
+  def good_user 
+      if session[:user_id] != Gossip.find(params[:id]).user_id 
+        flash[:danger] = "Mauvais utilisateur"
+        redirect_to gossips_path
+      end
+  end
+
 
 
 end
